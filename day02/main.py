@@ -1,8 +1,12 @@
+import os
+
 import pytest
+
+INPUT_TXT = os.path.join(os.path.dirname(__file__), "input.txt")
 
 
 def read_input() -> str:
-    with open("day02/input.txt", "r") as f:
+    with open(INPUT_TXT, "r") as f:
         return f.read()
 
 

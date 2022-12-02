@@ -11,37 +11,18 @@ def read_input() -> str:
 
 
 def puzzle1(input_: str) -> int:
-    elves_calories = input_.split(sep="\n\n")
-    return max(sum(int(cal) for cal in cals.splitlines()) for cals in elves_calories)
+    pass
 
 
 def puzzle2(input_: str) -> int:
-    elves_calories = input_.split(sep="\n\n")
-    return sum(
-        sorted(sum(int(cal) for cal in cals.splitlines()) for cals in elves_calories)[
-            -3:
-        ]
-    )
+    pass
 
 
 INPUT = """\
-1000
-2000
-3000
 
-4000
-
-5000
-6000
-
-7000
-8000
-9000
-
-10000
 """
-EXPECTED_1 = 24000
-EXPECTED_2 = 45000
+EXPECTED_1 = 0
+EXPECTED_2 = 0
 
 
 @pytest.mark.parametrize(
