@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 import pytest
@@ -6,7 +8,7 @@ INPUT_TXT = os.path.join(os.path.dirname(__file__), "input.txt")
 
 
 def read_input() -> str:
-    with open(INPUT_TXT, "r") as f:
+    with open(INPUT_TXT) as f:
         return f.read()
 
 
