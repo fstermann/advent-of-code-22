@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 import pytest
@@ -6,22 +8,19 @@ INPUT_TXT = os.path.join(os.path.dirname(__file__), "input.txt")
 
 
 def read_input() -> str:
-    with open(INPUT_TXT, "r") as f:
+    with open(INPUT_TXT) as f:
         return f.read()
 
 
 def puzzle1(input_: str) -> int:
-    elves_calories = input_.split(sep="\n\n")
-    return max(sum(int(cal) for cal in cals.splitlines()) for cals in elves_calories)
+    elves = input_.split(sep="\n\n")
+    return max(sum(map(int, cals.splitlines())) for cals in elves)
 
 
 def puzzle2(input_: str) -> int:
-    elves_calories = input_.split(sep="\n\n")
-    return sum(
-        sorted(sum(int(cal) for cal in cals.splitlines()) for cals in elves_calories)[
-            -3:
-        ]
-    )
+    elves = input_.split(sep="\n\n")
+    cals_ordered = sorted(sum(map(int, cals.splitlines())) for cals in elves)
+    return sum(cals_ordered[-3:])
 
 
 INPUT = """\
