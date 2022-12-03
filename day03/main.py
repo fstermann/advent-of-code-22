@@ -20,8 +20,7 @@ def puzzle1(input_: str) -> int:
     dups = []
     for s in input_.splitlines():
         r1, r2 = set(s[: len(s) // 2]), set(s[len(s) // 2 :])
-        if r1 & r2:
-            dups += list(r1 & r2)
+        dups += list(r1 & r2)
 
     return sum(item2priority[d] for d in dups)
 
