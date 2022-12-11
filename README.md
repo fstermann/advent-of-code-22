@@ -25,3 +25,9 @@ $ pytest dayXX/main.py
 Inspired by [this](https://www.reddit.com/r/adventofcode/comments/zdszct/2022_day_5_1_small_terminal_python_animation_for/) Reddit post from [MrAntex](https://github.com/MrAntex/AoC-Day5p1-animated).
 
 This utilizes the curses library to create a terminal visualization of the crane moving the crates.
+
+Run with:
+
+```bash
+$ python day05/pretty.py
+```
