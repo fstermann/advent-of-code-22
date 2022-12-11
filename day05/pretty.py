@@ -73,7 +73,7 @@ class CraneView:
         curses.init_pair(3, curses.COLOR_CYAN, -1)
         self.ACTIVE_CRATE = curses.color_pair(3) | curses.A_BOLD
         curses.init_pair(4, curses.COLOR_RED, -1)
-        self.INACTIVE_CRATE = curses.color_pair(4)
+        self.INACTIVE_CRATE = curses.color_pair(4) | curses.A_BOLD
 
     def render(self, crates) -> None:
         self.n_crates = len(crates)
