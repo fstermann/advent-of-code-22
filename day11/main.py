@@ -15,7 +15,7 @@ def read_input() -> str:
 
 
 class Monkey(NamedTuple):
-    starting_items: list[int]
+    items: list[int]
     operation: str
     test: int
     next_monkey: dict[bool, int]
@@ -47,14 +47,14 @@ def puzzle1(input_: str) -> int:
 
     for _ in range(20):
         for i, monkey in enumerate(monkeys):
-            for level in monkey.starting_items.copy():
+            for level in monkey.items.copy():
                 # Inspect
                 level = eval(monkey.operation) // 3
                 inspections[i] += 1
                 # Throw
                 next_monkey = monkey.next_monkey[level % monkey.test == 0]
-                monkeys[next_monkey].starting_items.append(level)
-            monkey.starting_items.clear()
+                monkeys[next_monkey].items.append(level)
+            monkey.items.clear()
 
     a1, a2 = sorted(inspections)[-2:]
     return a1 * a2
@@ -68,14 +68,14 @@ def puzzle2(input_: str) -> int:
 
     for _ in range(10_000):
         for i, monkey in enumerate(monkeys):
-            for level in monkey.starting_items:
+            for level in monkey.items:
                 # Inspect
                 level = eval(monkey.operation) % test_lcm
                 inspections[i] += 1
                 # Throw
                 next_monkey = monkey.next_monkey[level % monkey.test == 0]
-                monkeys[next_monkey].starting_items.append(level)
-            monkey.starting_items.clear()
+                monkeys[next_monkey].items.append(level)
+            monkey.items.clear()
 
     a1, a2 = sorted(inspections)[-2:]
     return a1 * a2
