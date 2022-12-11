@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from math import lcm
+from typing import Callable
 from typing import NamedTuple
 
 import pytest
@@ -16,7 +17,7 @@ def read_input() -> str:
 
 class Monkey(NamedTuple):
     items: list[int]
-    operation: str
+    operation: Callable[[int], int]
     test: int
     next_monkey: dict[bool, int]
 
@@ -26,7 +27,7 @@ def get_monkeys(input_: str) -> list[Monkey]:
     for monkey in input_.split("\n\n"):
         info = monkey.splitlines()[1:]
         starting_items = [int(i) for i in info[0].split(":")[1].split(", ")]
-        operation = info[1].split("=")[1].strip().replace("old", "level")
+        operation = eval(f"lambda old: {info[1].split('=')[1].strip()}")
         test = int(info[2].split()[-1])
         if_true = int(info[3].split()[-1])
         if_false = int(info[4].split()[-1])
@@ -49,7 +50,7 @@ def puzzle1(input_: str) -> int:
         for i, monkey in enumerate(monkeys):
             for level in monkey.items.copy():
                 # Inspect
-                level = eval(monkey.operation) // 3
+                level = monkey.operation(level) // 3
                 inspections[i] += 1
                 # Throw
                 next_monkey = monkey.next_monkey[level % monkey.test == 0]
@@ -70,7 +71,7 @@ def puzzle2(input_: str) -> int:
         for i, monkey in enumerate(monkeys):
             for level in monkey.items:
                 # Inspect
-                level = eval(monkey.operation) % test_lcm
+                level = monkey.operation(level) % test_lcm
                 inspections[i] += 1
                 # Throw
                 next_monkey = monkey.next_monkey[level % monkey.test == 0]
