@@ -22,7 +22,7 @@ def puzzle1(input_: str) -> str:
 
     for line in crate_stacks[1:]:
         for i, p in enumerate(pos):
-            crates[i] += [line[p]] if line[p] != " " else []
+            crates[i] += [line[p]] if p < len(line) and line[p] != " " else []
 
     for move in moves.splitlines():
         n, from_, to_ = (int(m) for m in re.findall(r"[0-9]+", move))
@@ -42,7 +42,7 @@ def puzzle2(input_: str) -> str:
 
     for line in crate_stacks[1:]:
         for i, p in enumerate(pos):
-            crates[i] += [line[p]] if line[p] != " " else []
+            crates[i] += [line[p]] if p < len(line) and line[p] != " " else []
 
     for move in moves.splitlines():
         n, from_, to_ = (int(m) for m in re.findall(r"[0-9]+", move))
