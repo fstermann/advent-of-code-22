@@ -1,6 +1,6 @@
 # advent-of-code-22
 
-This repository contains my solutions to the [Advent of Code 2020](https://adventofcode.com/2020) challenges.
+This repository contains my solutions to the [Advent of Code 2022](https://adventofcode.com/2022) challenges.
 
 ## Usage
 
